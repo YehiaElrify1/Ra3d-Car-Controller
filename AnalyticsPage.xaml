@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ra3dCar.AnalyticsPage"
+             BackgroundColor="#070C16"
+             Title="Analytics">
+
+    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Analytics Dashboard" TextColor="#00D2FF" FontSize="24" FontAttributes="Bold" />
+        <Label Text="Data will appear here" TextColor="#61788C" HorizontalOptions="Center" Margin="0,10,0,0"/>
+    </VerticalStackLayout>
+
+</ContentPage>
