@@ -22,14 +22,6 @@ This application is the software brain for the **Ra3d** hardware system, which i
 * **Communication:** HC-05 Bluetooth Module (UART to Bluetooth SPP bridge).
 * **Actuators:** Motor Drivers and DC Motors.
 
-## 📱 Screenshots
-
-> *(Add your screenshots here by dragging and dropping images directly into this README file on GitHub)*
-> 
-> | Setup & Radar | Drive Dashboard | Analytics |
-> | :---: | :---: | :---: |
-> | ![Setup Placeholder](https://via.placeholder.com/250x500.png?text=Setup+Page) | ![Drive Placeholder](https://via.placeholder.com/250x500.png?text=Drive+Page) | ![Analytics Placeholder](https://via.placeholder.com/250x500.png?text=Analytics+Page) |
-
 ## ⚙️ Software Architecture & Tech Stack
 
 * **Framework:** .NET MAUI (.NET 10)
