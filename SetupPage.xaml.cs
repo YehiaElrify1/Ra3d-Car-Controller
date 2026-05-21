@@ -117,6 +117,8 @@ public partial class SetupPage : ContentPage
                 {
                     // Update the global state to notify the rest of the application
                     App.IsConnected = true; 
+                    // استخراج قناة نقل البيانات
+                    App.BthStream = _bluetoothClient.GetStream();
                     await DisplayAlertAsync("Success", "Ra3d Car Connected!", "Let's Go");
                     DisconnectBtn.IsVisible = true;
                 }
@@ -156,6 +158,9 @@ public partial class SetupPage : ContentPage
             DisconnectBtn.IsVisible = false;
 
             await DisplayAlertAsync("Status", "Disconnected", "OK");
+
+            App.BthStream?.Close();
+            App.BthStream = null;
         }
         catch (Exception ex)
         {

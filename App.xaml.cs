@@ -2,29 +2,62 @@
 
 public partial class App : Application
 {
-    /// <summary>
-    /// A global event broadcasted whenever the Bluetooth connection state changes.
-    /// Pages can subscribe to this event to update their UI instantly.
-    /// </summary>
+    // ==========================================
+    // 1. أحداث وحالة الاتصال (Connection State)
+    // ==========================================
     public static event Action? ConnectionChanged;
-
-    private static bool _isConnected = false;
     
-    /// <summary>
-    /// Gets or sets the global Bluetooth connection state.
-    /// Acts as a smart property that alerts the entire app upon state changes.
-    /// </summary>
+    private static bool _isConnected = false;
     public static bool IsConnected
     {
         get => _isConnected;
         set
         {
             _isConnected = value;
-            // Invoke the event to notify all subscribed pages instantly
-            ConnectionChanged?.Invoke();
+            ConnectionChanged?.Invoke(); // تنبيه كل الشاشات بتغير حالة الاتصال
         }
     }
 
+    // ==========================================
+    // 2. قناة نقل البيانات (Bluetooth Stream)
+    // ==========================================
+    public static System.IO.Stream? BthStream { get; set; }
+
+    // ==========================================
+    // 3. أحداث وحالة الحرارة (Temperature State)
+    // ==========================================
+    public static event Action<double>? TemperatureChanged;
+    public static double CurrentTemperature { get; private set; }
+    
+    public static void UpdateTemperature(double temp)
+    {
+        CurrentTemperature = temp;
+        TemperatureChanged?.Invoke(temp); // تنبيه شاشة الـ Analytics بتغير الحرارة
+    }
+
+    // ==========================================
+    // 4. دالة إرسال الأوامر للعربية (Command Sender)
+    // ==========================================
+    public static async Task SendCommand(string command)
+    {
+        if (IsConnected && BthStream != null && BthStream.CanWrite)
+        {
+            try
+            {
+                byte[] buffer = System.Text.Encoding.ASCII.GetBytes(command);
+                await BthStream.WriteAsync(buffer, 0, buffer.Length);
+            }
+            catch
+            {
+                // لو حصل مشكلة في السلك أو البلوتوث قفل، افصل التطبيق بأمان
+                IsConnected = false; 
+            }
+        }
+    }
+
+    // ==========================================
+    // 5. دوال التطبيق الأساسية
+    // ==========================================
     public App()
     {
         InitializeComponent();
