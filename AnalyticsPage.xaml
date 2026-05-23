@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ra3dCar.AnalyticsPage"
+             BackgroundColor="#070C16"
+             Title="Analytics">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="30" VerticalOptions="Center">
+            
+            <Label Text="Live Core Temperature" 
+                   TextColor="#00D2FF" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <Grid HeightRequest="220" WidthRequest="220" HorizontalOptions="Center">
+                <Ellipse Stroke="#121A2F" StrokeThickness="12" Fill="#0D1625"/>
+                
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5">
+                    
+                    <Label x:Name="lblBigTemp" 
+                           Text="0.0 °C" 
+                           FontSize="40" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center"/>
+                    
+                    <Label x:Name="lblStatus" 
+                           Text="SYSTEM OK" 
+                           TextColor="#00FF00" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Border BackgroundColor="#121A2F" Stroke="#2A3950" StrokeThickness="1" Padding="15">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+                
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Thermal Protection Status:" TextColor="Gray" FontSize="14"/>
+                    
+                    <Label x:Name="lblSafetyNotice" 
+                           Text="Monitoring motors and battery health..." 
+                           TextColor="#61788C" 
+                           FontSize="13"/>
+                </VerticalStackLayout>
+            </Border>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

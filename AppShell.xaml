@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Ra3dCar.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Ra3dCar"
+    Shell.FlyoutBehavior="Disabled"
+    
+    Shell.NavBarIsVisible="False"
+    
+    Shell.TabBarBackgroundColor="#070C16"
+    Shell.TabBarTitleColor="#00D2FF"
+    Shell.TabBarUnselectedColor="#61788C">
+    <TabBar>
+        <Tab Title="Drive" Icon="drive_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DrivePage}" />
+        </Tab>
+
+        <Tab Title="Analytics" Icon="analytics_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AnalyticsPage}" />
+        </Tab>
+
+        <Tab Title="Setup" Icon="setup_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SetupPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

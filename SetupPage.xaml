@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ra3dCar.SetupPage"
+             BackgroundColor="#070C16"
+             Title="System Setup">
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20">
+        
+        <VerticalStackLayout Grid.Row="0" Spacing="5" Margin="0,0,0,20">
+            <Label Text="BLUETOOTH RADAR" TextColor="#00D2FF" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <BoxView HeightRequest="2" Color="#00D2FF" HorizontalOptions="Fill" Margin="50,0"/>
+        </VerticalStackLayout>
+
+        <Border Grid.Row="1" BackgroundColor="#121A2F" Stroke="#1E2A47" StrokeThickness="1" Padding="0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="15" />
+            </Border.StrokeShape>
+            
+            <CollectionView x:Name="DevicesListView" 
+                            SelectionMode="Single"
+                            SelectionChanged="OnDeviceSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15" ColumnDefinitions="Auto, *">
+                            <Label Grid.Column="0" Text="📱" FontSize="24" VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1" Margin="15,0,0,0" VerticalOptions="Center">
+                                <Label Text="{Binding DeviceName}" TextColor="White" FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="{Binding DeviceAddress}" TextColor="#61788C" FontSize="12"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="15" Margin="0,20,0,0">
+            <ActivityIndicator x:Name="ScanIndicator" IsRunning="False" Color="#00D2FF" HorizontalOptions="Center"/>
+            
+            <Button Text="SCAN FOR DEVICES" 
+                    Clicked="OnScanClicked"
+                    BackgroundColor="#00D2FF" 
+                    TextColor="#070C16" 
+                    FontAttributes="Bold" 
+                    HeightRequest="55"
+                    CornerRadius="10"/>
+
+            <Button x:Name="DisconnectBtn"
+                    Text="TERMINATE CONNECTION" 
+                    Clicked="OnDisconnectClicked"
+                    BackgroundColor="Transparent" 
+                    TextColor="#FF004D" 
+                    BorderColor="#FF004D"
+                    BorderWidth="1"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    IsVisible="False"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ra3dCar.DrivePage"
+             BackgroundColor="#070C16"
+             Title="Drive">
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20">
+
+        <Frame Grid.Row="0" 
+               BackgroundColor="#121A2F" 
+               BorderColor="#00D2FF" 
+               CornerRadius="15" 
+               Padding="15,10"
+               HasShadow="True">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                <Ellipse WidthRequest="12" HeightRequest="12" Fill="#FF004D" x:Name="ConnectionIndicator" />
+                <Label Text="Disconnected" TextColor="#61788C" FontSize="14" FontAttributes="Bold" x:Name="ConnectionLabel" />
+            </StackLayout>
+        </Frame>
+
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
+            <Label x:Name="RadarLabel" Text="Radar: Standby" TextColor="#00D2FF" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+            
+            <Grid WidthRequest="200" HeightRequest="200" HorizontalOptions="Center">
+                <Ellipse x:Name="RadarCircle" Stroke="#121A2F" StrokeThickness="6" Fill="#0D1625"/>
+                <Ellipse Stroke="#00D2FF" StrokeThickness="2" Margin="10" Opacity="0.3"/>
+            </Grid>
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="2" 
+              RowDefinitions="60, 60, 60" 
+              ColumnDefinitions="60, 60, 60" 
+              HorizontalOptions="Center" 
+              RowSpacing="10" 
+              ColumnSpacing="10"
+              Margin="0,0,0,20">
+            
+            <Button Grid.Row="0" Grid.Column="1" Text="▲" 
+                    BackgroundColor="#121A2F" TextColor="#00D2FF" CornerRadius="10" FontSize="24"
+                    Pressed="OnForwardPressed" Released="OnButtonReleased"/>
+            
+            <Button Grid.Row="1" Grid.Column="0" Text="◀" 
+                    BackgroundColor="#121A2F" TextColor="#00D2FF" CornerRadius="10" FontSize="24"
+                    Pressed="OnLeftPressed" Released="OnButtonReleased"/>
+            
+            <Button Grid.Row="1" Grid.Column="2" Text="▶" 
+                    BackgroundColor="#121A2F" TextColor="#00D2FF" CornerRadius="10" FontSize="24"
+                    Pressed="OnRightPressed" Released="OnButtonReleased"/>
+            
+            <Button Grid.Row="2" Grid.Column="1" Text="▼" 
+                    BackgroundColor="#121A2F" TextColor="#00D2FF" CornerRadius="10" FontSize="24"
+                    Pressed="OnBackPressed" Released="OnButtonReleased"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
